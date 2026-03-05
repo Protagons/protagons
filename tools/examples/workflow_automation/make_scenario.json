@@ -1,0 +1,36 @@
+{
+  "name": "Protagons — Library Fetch",
+  "flow": [
+    {
+      "id": 1,
+      "module": "http:ActionSendData",
+      "version": 3,
+      "parameters": {
+        "url": "https://api.usaw.ai/api/v1/library/software-developer",
+        "method": "GET",
+        "headers": [],
+        "qs": [],
+        "bodyType": "raw",
+        "parseResponse": true,
+        "serializeUrl": false
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": { "x": 0, "y": 0 },
+        "restore": {},
+        "expect": [
+          { "name": "url", "type": "url", "label": "URL" },
+          { "name": "method", "type": "select", "label": "Method" }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true
+    }
+  }
+}

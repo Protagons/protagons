@@ -1,0 +1,47 @@
+{
+  "skill": "protagons",
+  "version": "1.0.0",
+  "description": "Browse, deploy, and generate Protagon AI character identities.",
+  "author": "Protagons",
+  "homepage": "https://protagons.com",
+  "entry": "protagons.mjs",
+  "tools": [
+    {
+      "name": "protagons_list",
+      "description": "List available Protagons from the public library. Returns name, slug, tagline, and category for each.",
+      "parameters": {
+        "page": { "type": "number", "description": "Page number (default 1)", "optional": true },
+        "limit": { "type": "number", "description": "Items per page, max 100 (default 20)", "optional": true },
+        "category": { "type": "string", "description": "Filter by category slug", "optional": true },
+        "search": { "type": "string", "description": "Search by name", "optional": true }
+      }
+    },
+    {
+      "name": "protagons_get",
+      "description": "Fetch a single Protagon by slug. Returns the full .protagon.json with all dimensions, personality, and synthesized prompt.",
+      "parameters": {
+        "slug": { "type": "string", "description": "Protagon slug (e.g. 'software-developer')", "required": true }
+      }
+    },
+    {
+      "name": "protagons_deploy",
+      "description": "Deploy a Protagon to the workspace as a SOUL.md personality file. Optionally includes voice configuration.",
+      "parameters": {
+        "slug": { "type": "string", "description": "Protagon slug to deploy", "required": true }
+      }
+    },
+    {
+      "name": "protagons_status",
+      "description": "Check the current deployment status — whether a SOUL.md exists and which Protagon is active."
+    },
+    {
+      "name": "protagons_generate",
+      "description": "Generate a new Protagon from a description using the Protagons API. Requires a Google API key.",
+      "parameters": {
+        "name": { "type": "string", "description": "Character name", "required": true },
+        "description": { "type": "string", "description": "Character description (min 20 chars)", "required": true },
+        "google_api_key": { "type": "string", "description": "Google/Gemini API key (BYOK)", "required": true }
+      }
+    }
+  ]
+}

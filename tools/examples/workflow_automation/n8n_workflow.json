@@ -1,0 +1,31 @@
+{
+  "name": "Protagons — Fetch and Use Character",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://api.usaw.ai/api/v1/library/software-developer",
+        "options": {}
+      },
+      "name": "Fetch Protagon",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const protagon = $input.first().json;\nconst systemPrompt = protagon.synthesized_prompt?.content || '';\nreturn [{ json: { name: protagon.name, systemPrompt } }];"
+      },
+      "name": "Extract Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [450, 300]
+    }
+  ],
+  "connections": {
+    "Fetch Protagon": {
+      "main": [
+        [{ "node": "Extract Prompt", "type": "main", "index": 0 }]
+      ]
+    }
+  }
+}
